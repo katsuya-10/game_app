@@ -15,8 +15,7 @@ class Brave
 end
 # 勇者クラスをインスタンス化
 brave = Brave.new( name: "クラウド", hp: 500, offense: 150, defense: 100)
-# brave2 = Brave.new("ティファ", 300, 200, 80)
-# brave3 = Brave.new("バレット", 700, 30, 200)
+
 
 # 値を取り出す
 puts <<~TEXT
@@ -30,4 +29,5 @@ TEXT
 brave.hp -= 30
 
 # ダメージに関するメッセージ
-puts "#{brave.name}はダメージを受けた！　残りHPは#{brave.hp}だ"
+puts "#{brave.name}はダメージを受けた！残りHPは#{brave.hp}だ"
+
