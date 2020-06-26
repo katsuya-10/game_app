@@ -125,15 +125,25 @@ class Monster
 
 end
 
-brave = Brave.new( name: "クラウド", hp: 500, offense: 300, defense: 100)
-monster = Monster.new( name: "セフィロス", hp: 600, offense: 200, defense: 100)
+# クラスのインスタンス化
+brave = Brave.new( name: "クラウド", hp: 500, offense: 200, defense: 100)
+monster = Monster.new( name: "セフィロス", hp: 500, offense: 200, defense: 100)
 
+# 攻撃処理のループ
 loop do
   brave.attack(monster)
-
-  break if monster.hp <= 0
+  if monster.hp <= 0
+    exp = (monster.offense + monster.defense) * 2
+    gil = (monster.offense + monster.defense) * 3
+    puts "#{brave.name}は戦いに勝った"
+    puts "#{exp}pの経験値と#{gil}ギルを獲得"
+    break
+  end
 
   monster.attack(brave)
-
-  break if brave.hp <= 0
+  if brave.hp <= 0
+    puts "#{brave.name}は倒れた"
+    puts "全滅した"
+    break
+  end
 end
