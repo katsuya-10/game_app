@@ -1,4 +1,9 @@
+require './message_dialog'
+
 class GamesController
+
+  include MessageDialog
+
   EXP_CONSTANT = 2
   GIL_CONSTANT = 3
 
@@ -6,9 +11,9 @@ class GamesController
     build_characters(params)
 
     loop do
-      @brave.attack(monster)
+      @brave.attack(@monster)
       break if battle_end?
-      @monster.attack(brave)
+      @monster.attack(@brave)
       break if battle_end?
     end
 
@@ -31,22 +36,22 @@ class GamesController
     end
 
     def battle_judgment
+      result = calculate_of_exp_and_gil
 
-      if brave_win?
-        result = colculate_of_exp_and_gil
-        puts "#{@brave.name}は戦いに勝った"
-        puts "#{result[:exp]}pの経験値と#{result[:gil]}ギルを獲得"
-      else
-        puts "#{@brave.name}は倒れた"
-        puts "全滅した"
-      end
+      end_message(result)
     end
 
     def calculate_of_exp_and_gil
-      exp = (@monster.offense + @monster.defense) * EXP_CONSTANT
-      gil = (@monster.offense + @monster.defense) * GIL_CONSTANT
-      result = {exp: exp, gil: gil}
+      if brave_win?
+        brave_win_flag = true
+        exp = (@monster.offense + @monster.defense) * EXP_CONSTANT
+        gil = (@monster.offense + @monster.defense) * GIL_CONSTANT
+      else
+        brave_win_flag = false
+        exp = 0
+        gil = 0
+      end
 
-      result
+      {brave_win_flag: brave_win_flag, exp: exp, gil: gil}
     end
 end
