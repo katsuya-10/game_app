@@ -1,3 +1,15 @@
+class Character
+  attr_reader :offense, :defense
+  attr_accessor :hp, :name
+
+  def initialize(**params)
+    @name = params[:name]
+    @hp = params[:hp]
+    @offense = params[:offense]
+    @defense = params[:defense]
+  end
+end
+
 class Brave
   attr_reader :name, :offense, :defense
   attr_accessor :hp
@@ -16,7 +28,6 @@ class Brave
 
     attack_type = decision_attack_type
     damage = calculate_damage(target: monster, attack_type: attack_type)
-
     cause_damage(target: monster, damage: damage)
 
     puts "#{monster.name}の残りHPは#{monster.hp}だ"
@@ -61,7 +72,6 @@ class Brave
   def calculate_special_attack
     @offense * SPECIAL_ATTACK_CONSTANT
   end
-
 end
 
 class Monster
