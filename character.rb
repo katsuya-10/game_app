@@ -13,4 +13,5 @@ class Character
     @offense = params[:offense]
     @defense = params[:defense]
   end
+  
 end

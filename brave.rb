@@ -5,13 +5,11 @@ class Brave < Character
   SPECIAL_ATTACK_CONSTANT = 1.5
 
   def attack(monster)
-
     attack_type = decision_attack_type
     damage = calculate_damage(target: monster, attack_type: attack_type)
     cause_damage(target: monster, damage: damage)
 
     attack_message(attack_type: attack_type)
-
     damage_message(target: monster, damage: damage)
   end
 
@@ -21,10 +19,8 @@ class Brave < Character
     attack_num = rand(4)
 
     if attack_num == 0
-    #   puts "凶切り"
       "special_attack"
     else
-    #   puts "通常攻撃"
       "normal_attack"
     end
   end

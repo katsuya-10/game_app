@@ -9,5 +9,6 @@ monster = Monster.new( name: "セフィロス", hp: 500, offense: 200, defense: 
 
 games_controller.battle(brave: brave, monster: monster)
 
+
 EXP_CONSTANT = 2
 GIL_CONSTANT = 3

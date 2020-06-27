@@ -1,7 +1,6 @@
 require './message_dialog'
 
 class GamesController
-
   include MessageDialog
 
   EXP_CONSTANT = 2

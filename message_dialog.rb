@@ -46,5 +46,7 @@ module MessageDialog
       #{origin_name}は#{transform_name}に変化した
 
       EOS
+
     end
+
 end
